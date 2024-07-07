@@ -14,35 +14,40 @@ datasource db {
 }
 
 model Book {
-  id        String   @id @default(uuid())
-  title     String
-  author    String
-  stock     Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  imageUrl  String?
+  id                String              @id @default(uuid())
+  title             String
+  author            String
+  stock             Int
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  imageUrl          String?
+  BorrowTransaction BorrowTransaction[]
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  imageUrl  String?
+  id                String              @id @default(uuid())
+  name              String
+  email             String              @unique
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  imageUrl          String?
+  BorrowTransaction BorrowTransaction[]
 }
 
 model BorrowTransaction {
-  id        String   @id @default(uuid())
-  bookId    String
-  userId  String
-  borrowDate DateTime @default(now())
-  returnDate DateTime?
+  id                String              @id @default(uuid())
+  book              Book                @relation(fields: [bookId], references: [id])
+  bookId            String
+  user              User                @relation(fields: [userId], references: [id])
+  userId            String
+  borrowDate        DateTime            @default(now())
+  returnDate        DateTime?
+  ReturnTransaction ReturnTransaction[]
 }
 
 model ReturnTransaction {
-  id             String   @id @default(uuid())
-  borrowId       String
-  returnDate     DateTime @default(now())
+  id                String            @id @default(uuid())
+  borrowTransaction BorrowTransaction @relation(fields: [borrowId], references: [id])
+  borrowId          String
+  returnDate        DateTime          @default(now())
 }
-
