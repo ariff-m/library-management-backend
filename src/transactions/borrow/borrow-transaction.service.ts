@@ -2,10 +2,37 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { CreateBorrowTransactionDto } from './dto/create-borrow-transaction.dto';
 import { UpdateBorrowTransactionDto } from './dto/update-borrow-transaction.dto';
+import { BorrowTransactionReportDto } from './dto/borrow-transaction-report.dto';
 
 @Injectable()
 export class BorrowTransactionService {
   constructor(private readonly prisma: PrismaService) {}
+
+  async getBorrowTransactionReport(): Promise<BorrowTransactionReportDto[]> {
+    const transactions = await this.prisma.borrowTransaction.findMany({
+      select: {
+        id: true,
+        borrowDate: true,
+        book: {
+          select: {
+            title: true,
+          },
+        },
+        user: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+
+    return transactions.map((transaction) => ({
+      id: transaction.id,
+      borrowDate: transaction.borrowDate,
+      bookTitle: transaction.book.title,
+      userName: transaction.user.name,
+    }));
+  }
 
   async create(data: CreateBorrowTransactionDto) {
     const book = await this.prisma.book.findUnique({

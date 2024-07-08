@@ -9,10 +9,16 @@ import {
 } from '@nestjs/common';
 import { BorrowTransactionService } from './borrow-transaction.service';
 import { CreateBorrowTransactionDto } from './dto/create-borrow-transaction.dto';
+import { BorrowTransactionReportDto } from './dto/borrow-transaction-report.dto';
 
 @Controller('borrow-transactions')
 export class BorrowTransactionController {
   constructor(private readonly service: BorrowTransactionService) {}
+
+  @Get('report')
+  async getBorrowTransactionReport(): Promise<BorrowTransactionReportDto[]> {
+    return this.service.getBorrowTransactionReport();
+  }
 
   @Post()
   async create(@Body() createDto: CreateBorrowTransactionDto) {
