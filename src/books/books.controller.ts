@@ -34,7 +34,7 @@ export class BooksController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: async (req, file, cb) => {
-          const uploadPath = join(__dirname, '../../../uploads');
+          const uploadPath = join(__dirname, '../../../uploads/books');
           await fs.ensureDir(uploadPath);
           console.log('Destination Path:', uploadPath);
           cb(null, uploadPath);
@@ -65,7 +65,7 @@ export class BooksController {
 
   @Get('uploads/:filename')
   async serveFile(@Param('filename') filename: string, @Res() res: Response) {
-    const filePath = join(__dirname, `../../../uploads/${filename}`);
+    const filePath = join(__dirname, `../../../uploads/books/${filename}`);
     console.log('Requested File Path:', filePath);
     res.sendFile(filePath);
   }
