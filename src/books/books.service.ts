@@ -31,4 +31,11 @@ export class BooksService {
   async remove(id: string) {
     return this.prisma.book.delete({ where: { id } });
   }
+
+  async updateImageUrl(id: string, imageUrl: string) {
+    return this.prisma.book.update({
+      where: { id },
+      data: { imageUrl },
+    });
+  }
 }

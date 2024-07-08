@@ -41,7 +41,6 @@ model BorrowTransaction {
   user              User                @relation(fields: [userId], references: [id])
   userId            String
   borrowDate        DateTime            @default(now())
-  returnDate        DateTime?
   ReturnTransaction ReturnTransaction[]
 }
 

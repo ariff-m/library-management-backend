@@ -4,7 +4,4 @@ export class CreateReturnTransactionDto {
   @IsUUID()
   @IsNotEmpty()
   borrowId: string;
-
-  @IsNotEmpty()
-  returnDate: Date;
 }
