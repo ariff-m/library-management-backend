@@ -6,12 +6,15 @@ import {
   Param,
   Patch,
   Delete,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ReturnTransactionService } from './return-transaction.service';
 import { CreateReturnTransactionDto } from './dto/create-return-transaction.dto';
 import { ReturnTransactionReportDto } from './dto/return-transaction-report.dto';
+import { TransformResponseInterceptor } from 'src/common/transform-response.interceptor';
 
 @Controller('return-transactions')
+@UseInterceptors(TransformResponseInterceptor)
 export class ReturnTransactionController {
   constructor(private readonly service: ReturnTransactionService) {}
 

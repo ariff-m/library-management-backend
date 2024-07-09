@@ -19,6 +19,7 @@ import { extname, join } from 'path';
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs-extra';
 import { Response } from 'express';
+import { TransformResponseInterceptor } from 'src/common/transform-response.interceptor';
 
 @Controller('books')
 export class BooksController {
@@ -30,6 +31,7 @@ export class BooksController {
   }
 
   @Post('upload/:id')
+  @UseInterceptors(TransformResponseInterceptor)
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -71,21 +73,25 @@ export class BooksController {
   }
 
   @Get()
+  @UseInterceptors(TransformResponseInterceptor)
   async findAll() {
     return this.booksService.findAll();
   }
 
   @Get(':id')
+  @UseInterceptors(TransformResponseInterceptor)
   async findOne(@Param('id') id: string) {
     return this.booksService.findOne(id);
   }
 
   @Patch(':id')
+  @UseInterceptors(TransformResponseInterceptor)
   update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
     return this.booksService.update(id, updateBookDto);
   }
 
   @Delete(':id')
+  @UseInterceptors(TransformResponseInterceptor)
   remove(@Param('id') id: string) {
     return this.booksService.remove(id);
   }

@@ -19,12 +19,14 @@ import { extname, join } from 'path';
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs-extra';
 import { Response } from 'express';
+import { TransformResponseInterceptor } from 'src/common/transform-response.interceptor';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('upload/:id')
+  @UseInterceptors(TransformResponseInterceptor)
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -66,26 +68,31 @@ export class UsersController {
   }
 
   @Post()
+  @UseInterceptors(TransformResponseInterceptor)
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
   @Get()
+  @UseInterceptors(TransformResponseInterceptor)
   findAll() {
     return this.usersService.findAll();
   }
 
   @Get(':id')
+  @UseInterceptors(TransformResponseInterceptor)
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
   @Patch(':id')
+  @UseInterceptors(TransformResponseInterceptor)
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(':id')
+  @UseInterceptors(TransformResponseInterceptor)
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }

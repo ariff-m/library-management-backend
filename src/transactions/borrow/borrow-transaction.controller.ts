@@ -6,12 +6,15 @@ import {
   Param,
   Patch,
   Delete,
+  UseInterceptors,
 } from '@nestjs/common';
 import { BorrowTransactionService } from './borrow-transaction.service';
 import { CreateBorrowTransactionDto } from './dto/create-borrow-transaction.dto';
 import { BorrowTransactionReportDto } from './dto/borrow-transaction-report.dto';
+import { TransformResponseInterceptor } from 'src/common/transform-response.interceptor';
 
 @Controller('borrow-transactions')
+@UseInterceptors(TransformResponseInterceptor)
 export class BorrowTransactionController {
   constructor(private readonly service: BorrowTransactionService) {}
 

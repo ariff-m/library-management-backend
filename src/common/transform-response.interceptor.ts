@@ -15,7 +15,7 @@ export class TransformResponseInterceptor implements NestInterceptor {
         const data = response.data ? response.data : response;
         const message = response.message
           ? response.message
-          : 'operation success';
+          : 'Operation Success';
         return {
           status: 'success',
           code: context.switchToHttp().getResponse().statusCode,
