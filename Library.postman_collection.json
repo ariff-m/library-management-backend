@@ -1,0 +1,829 @@
+{
+	"info": {
+		"_postman_id": "51db074d-c987-4e26-adbc-0d5035c74ed2",
+		"name": "Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31570460"
+	},
+	"item": [
+		{
+			"name": "primary endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view books by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/:idBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						":idBook"
+					],
+					"variable": [
+						{
+							"key": "idBook",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view photo of book",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/uploads/:filename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"uploads",
+						":filename"
+					],
+					"variable": [
+						{
+							"key": "filename",
+							"value": "0bfe9fccbce10b63cc284d5b7da67a742.jpeg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view borrow books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/borrow-transactions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"borrow-transactions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view borrow books by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/borrow-transactions/:idBorrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"borrow-transactions",
+						":idBorrow"
+					],
+					"variable": [
+						{
+							"key": "idBorrow",
+							"value": "16f88e00-9501-40db-ae0c-73790d68455a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view return books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/return-transactions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return-transactions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view return books by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/return-transactions/:idReturn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return-transactions",
+						":idReturn"
+					],
+					"variable": [
+						{
+							"key": "idReturn",
+							"value": "73e58af1-768f-409e-9efa-67c458121d1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrow books report",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/borrow-transactions/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"borrow-transactions",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "return books report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/return-transactions/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return-transactions",
+						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n\"title\": \"To Kill a Mockingbird123\",\r\n\"author\": \"Harper Lee\",\r\n\"stock\": 5\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add photo of book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef3db02-6ae9-49d0-a51d-7cf3fc9b68bb"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/upload/:idBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						"upload",
+						":idBook"
+					],
+					"variable": [
+						{
+							"key": "idBook",
+							"value": "0a0a8c99-bebe-4153-ae12-32592687a5e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add borrow books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": \"0a0a8c99-bebe-4153-ae12-32592687a5e2\",\r\n  \"userId\": \"7cee11b4-8c02-44e2-a5f6-c1f4d749e7ca\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/borrow-transactions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"borrow-transactions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add return book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"borrowId\": \"16f88e00-9501-40db-ae0c-73790d68455a\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/return-transactions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return-transactions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit data book",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"testing1212\",\r\n    \"author\": \"Sample Author\",\r\n    \"stock\": 10,\r\n    \"imageUrl\": \"http://example.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit borrow books",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": \"08d12b40-0ae7-4a87-a5c5-21c9996a7ae5\",\r\n  \"userId\": \"0598ad4e-e817-4a52-8084-550e132f5368\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/borrow-transactions/:idBorrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"borrow-transactions",
+						":idBorrow"
+					],
+					"variable": [
+						{
+							"key": "idBorrow",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit return books",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": \"08d12b40-0ae7-4a87-a5c5-21c9996a7ae5\",\r\n  \"userId\": \"0598ad4e-e817-4a52-8084-550e132f5368\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/return-transactions/:idReturn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return-transactions",
+						":idReturn"
+					],
+					"variable": [
+						{
+							"key": "idReturn",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/books/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete borrow books",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/borrow-transactions/:idBorrow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"borrow-transactions",
+						":idBorrow"
+					],
+					"variable": [
+						{
+							"key": "idBorrow",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete return books",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/return-transactions/:idReturn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return-transactions",
+						":idReturn"
+					],
+					"variable": [
+						{
+							"key": "idReturn",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view user by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/:idUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						":idUser"
+					],
+					"variable": [
+						{
+							"key": "idUser",
+							"value": "dce94d58-3461-4d02-8e7b-b90ccf49921c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view photo of users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"arifrewr\",\r\n    \"email\": \"ariffdfs@gmail.com\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/upload/:filename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"upload",
+						":filename"
+					],
+					"variable": [
+						{
+							"key": "filename",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"mario\",\r\n    \"email\": \"inimario2@gmail.com\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add photo of user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef3db02-6ae9-49d0-a51d-7cf3fc9b68bb"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/upload/:idUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"upload",
+						":idUser"
+					],
+					"variable": [
+						{
+							"key": "idUser",
+							"value": "d0f4e050-d91d-47e2-8679-8e4e3060b7d4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit data user",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"arif2343\",\r\n    \"email\": \"arif2@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/:idUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						":idUser"
+					],
+					"variable": [
+						{
+							"key": "idUser",
+							"value": "7cee11b4-8c02-44e2-a5f6-c1f4d749e7ca"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/:idUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						":idUser"
+					],
+					"variable": [
+						{
+							"key": "idUser",
+							"value": "dce94d58-3461-4d02-8e7b-b90ccf49921c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
